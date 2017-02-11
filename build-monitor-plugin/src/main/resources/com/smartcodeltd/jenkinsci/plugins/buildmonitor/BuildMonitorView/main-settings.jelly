@@ -41,6 +41,13 @@
                            id="settings-show-badges" type="checkbox" />
                     <label for="settings-show-badges" title="Show the last build badges">Show badges?</label>
                 </li>
+                <li class="settings-option">
+                    <input ng-model="settings.hideFolders"
+                           ng-false-value="'0'"
+                           ng-true-value="'1'"
+                           id="settings-hide-folders" type="checkbox" />
+                    <label for="settings-hide-folders" title="Hide folders">Hide folders?</label>
+                </li>
                 <li class="buttons">
                     <a class="btn"
                        href="configure"
