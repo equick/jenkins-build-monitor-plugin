@@ -25,6 +25,8 @@ angular.
 
                     $scope.jobs = response.data.data;
 
+                    $scope.jobs = hideFolders($scope.jobs, $rootScope.settings.hideFolders)
+
                     $rootScope.$broadcast('jenkins:data-fetched', response.data.meta);
 
                     $scope.fontSize = fontSizeFor($scope.jobs, $rootScope.settings.numberOfColumns);
@@ -45,6 +47,17 @@ angular.
                     actualRows    = Math.ceil(itemsCount / actualColumns);
 
                 return (baseFontSizePercentage / Math.max(actualRows, actualColumns));
+            }
+
+            function hideFolders(jobs, hide) {
+              if (hide == 1){
+                for (var i = 0, l = jobs.length; i < l; i++ ) {
+                  var name_str = jobs[i].name;
+                  var name_arr = name_str.split('»');
+                  jobs[i].name = name_arr[name_arr.length-1];
+                }
+              }
+              return jobs;
             }
         }]).
 
